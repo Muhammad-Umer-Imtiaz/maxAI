@@ -242,6 +242,7 @@ const AiAssistantPage = () => {
             email: user?.email || 'anonymous',
             firstName: user?.firstName || 'Guest',
             lastName: user?.lastName || '',
+            // language: user?.language || 'english',
             gender: (user as any)?.gender || 'male',
           },
         })

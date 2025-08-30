@@ -56,6 +56,7 @@ export async function POST(request: NextRequest) {
         lastName: userData.lastName || '',
         gender: userData.gender || 'prefer-not-to-say',
         password: userData.password,
+        language: userData.language,
         plan: 'free' as const, // Use 'as const' to ensure proper type
         aiCallsUsed: 0,
         maxAiCalls: 5,
@@ -100,6 +101,7 @@ export async function POST(request: NextRequest) {
         firstName: user?.firstName,
         lastName: user?.lastName,
         gender: user?.gender,
+        language: user?.language,
       },
       token: token.token,
     })
