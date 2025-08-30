@@ -1,0 +1,264 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+/* ---break---
+*/
+@custom-variant dark (&:is(.dark *));
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer theme {
+  :root {
+    /* MAXFITAI Design System - Light Mode */
+    --color-background: 0 0% 96%;
+    --color-foreground: 0 0% 20%;
+
+    --color-card: 0 0% 100%;
+    --color-card-foreground: 0 0% 20%;
+
+    --color-popover: 0 0% 100%;
+    --color-popover-foreground: 0 0% 20%;
+
+    --color-primary: 0 0% 0%;
+    --color-primary-foreground: 0 0% 100%;
+
+    --color-secondary: 0 0% 96%;
+    --color-secondary-foreground: 0 0% 20%;
+
+    --color-muted: 0 0% 96%;
+    --color-muted-foreground: 0 0% 40%;
+
+    --color-accent: 72 100% 53%;
+    --color-accent-foreground: 0 0% 0%;
+
+    --color-destructive: 0 84.2% 60.2%;
+    --color-destructive-foreground: 0 0% 100%;
+
+    --color-border: 0 0% 90%;
+    --color-input: 0 0% 90%;
+    --color-ring: 72 100% 53%;
+
+    /* MAXFITAI Custom Colors - Available as Tailwind utilities */
+    --color-maxfit-black: 0 0% 0%;
+    --color-maxfit-dark-grey: 0 0% 10%;
+    --color-maxfit-darker-grey: 0 0% 17%;
+    --color-maxfit-neon-green: 72 100% 53%;
+    --color-maxfit-neon-green-dark: 72 92% 44%;
+    --color-maxfit-light-grey: 0 0% 96%;
+    --color-maxfit-medium-grey: 0 0% 40%;
+    --color-maxfit-white: 0 0% 100%;
+    --color-maxfit-text-dark: 0 0% 20%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--color-maxfit-black)), hsl(var(--color-maxfit-dark-grey)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--color-maxfit-neon-green)), hsl(var(--color-maxfit-neon-green-dark)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--color-maxfit-darker-grey)), hsl(var(--color-maxfit-dark-grey)));
+
+    /* Shadows */
+    --shadow-glow: 0 0 30px hsl(var(--color-maxfit-neon-green) / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(var(--color-maxfit-black) / 0.3);
+    --shadow-elegant: 0 20px 40px -10px hsl(var(--color-maxfit-black) / 0.2);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .dark {
+    /* MAXFITAI Design System - Dark Mode (Primary) */
+    --color-background: 0 0% 0%;
+    --color-foreground: 0 0% 100%;
+
+    --color-card: 0 0% 10%;
+    --color-card-foreground: 0 0% 100%;
+
+    --color-popover: 0 0% 10%;
+    --color-popover-foreground: 0 0% 100%;
+
+    --color-primary: 72 100% 53%;
+    --color-primary-foreground: 0 0% 0%;
+
+    --color-secondary: 0 0% 17%;
+    --color-secondary-foreground: 0 0% 100%;
+
+    --color-muted: 0 0% 17%;
+    --color-muted-foreground: 0 0% 70%;
+
+    --color-accent: 72 100% 53%;
+    --color-accent-foreground: 0 0% 0%;
+
+    --color-destructive: 0 62.8% 30.6%;
+    --color-destructive-foreground: 0 0% 100%;
+
+    --color-border: 0 0% 17%;
+    --color-input: 0 0% 17%;
+    --color-ring: 72 100% 53%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--color-border));
+  }
+
+  body {
+    background-color: hsl(var(--color-background));
+    color: hsl(var(--color-foreground));
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero animations */
+  .hero-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .hero-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Button variants */
+  .btn-neon {
+    background-color: hsl(var(--color-accent));
+    color: hsl(var(--color-accent-foreground));
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 0 20px hsl(var(--color-maxfit-neon-green) / 0.3);
+  }
+
+  .btn-neon:hover {
+    background-color: hsl(var(--color-accent) / 0.9);
+    box-shadow: 0 0 30px hsl(var(--color-maxfit-neon-green) / 0.5);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline-neon {
+    border: 2px solid hsl(var(--color-accent));
+    color: hsl(var(--color-accent));
+    background-color: transparent;
+    transition: all 0.3s;
+  }
+
+  .btn-outline-neon:hover {
+    background-color: hsl(var(--color-accent));
+    color: hsl(var(--color-accent-foreground));
+  }
+
+  /* Card glassmorphism */
+  .glass-card {
+    backdrop-filter: blur(16px);
+    background: hsl(var(--color-maxfit-darker-grey) / 0.8);
+    border: 1px solid hsl(var(--color-maxfit-neon-green) / 0.2);
+  }
+
+  /* Text animations */
+  .text-glow {
+    text-shadow: 0 0 10px hsl(var(--color-maxfit-neon-green) / 0.6);
+  }
+
+  /* Hover animations */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  /* Gradient backgrounds */
+  .bg-hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .bg-accent-gradient {
+    background: var(--gradient-accent);
+  }
+
+  .bg-card-gradient {
+    background: var(--gradient-card);
+  }
+
+  /* Mobile-specific utilities */
+  .mobile-container {
+    @apply px-3 sm:px-6;
+  }
+
+  .mobile-card {
+    @apply rounded-xl sm:rounded-2xl p-4 sm:p-6;
+  }
+
+  .mobile-text {
+    @apply text-sm sm:text-base;
+  }
+
+  .mobile-title {
+    @apply text-lg sm:text-xl;
+  }
+
+  .mobile-heading {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  /* Touch-friendly interactive elements */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Mobile-optimized glass card */
+  .glass-card-mobile {
+    backdrop-filter: blur(12px);
+    background: hsl(var(--color-maxfit-darker-grey) / 0.85);
+    border: 1px solid hsl(var(--color-maxfit-neon-green) / 0.2);
+  }
+
+  /* Safe area adjustments for mobile */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Mobile-specific responsive breakpoints */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--color-maxfit-neon-green) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--color-maxfit-neon-green) / 0.6);
+  }
+}
